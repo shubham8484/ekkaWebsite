@@ -1,0 +1,12 @@
+# Ekka Media — Next.js on Netlify
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://script.google.com https://*.google.com https://api.fontshare.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' https://api.fontshare.com data:; img-src 'self' data: https:; frame-src 'self' https://script.google.com https://*.google.com https://*.googleusercontent.com; connect-src 'self' https://script.google.com https://api.fontshare.com;"

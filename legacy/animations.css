@@ -1,0 +1,471 @@
+/* ============================================
+   EKKA MEDIA — Enhanced motion
+   ============================================ */
+
+:root {
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scroll progress */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  z-index: 1001;
+  background: linear-gradient(90deg, var(--gold), #8b7355, var(--gold));
+  pointer-events: none;
+  transform-origin: left;
+  transition: width 0.08s linear;
+}
+
+/* Nav links stagger on load */
+body.is-loaded .nav__links a {
+  opacity: 0;
+  animation: navLinkIn 0.65s var(--ease-out) forwards;
+}
+
+body.is-loaded .nav__links a:nth-child(1) { animation-delay: 0.25s; }
+body.is-loaded .nav__links a:nth-child(2) { animation-delay: 0.32s; }
+body.is-loaded .nav__links a:nth-child(3) { animation-delay: 0.39s; }
+body.is-loaded .nav__links a:nth-child(4) { animation-delay: 0.46s; }
+body.is-loaded .nav__links a:nth-child(5) { animation-delay: 0.53s; }
+
+body.is-loaded .nav__cta {
+  opacity: 0;
+  animation: navLinkIn 0.65s var(--ease-out) 0.58s forwards;
+}
+
+@keyframes navLinkIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero headline — cinematic reveal */
+.hero__headline.animate-on-load {
+  transform: translateY(48px);
+  clip-path: inset(0 0 100% 0);
+}
+
+body.is-loaded .hero__headline.animate-on-load {
+  animation: headlineReveal 1.05s var(--ease-spring) 0.12s forwards;
+}
+
+@keyframes headlineReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Buttons — shimmer + lift */
+.btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.55s var(--ease-out);
+  pointer-events: none;
+}
+
+.btn:hover::before {
+  transform: translateX(120%);
+}
+
+.btn--secondary::before {
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(201, 168, 76, 0.12) 50%,
+    transparent 65%
+  );
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Gold rule draws in */
+.gold-rule.reveal {
+  width: 0;
+  opacity: 1;
+  transform: none;
+  transition: width 0.9s var(--ease-spring);
+}
+
+.gold-rule.reveal.visible {
+  width: 60px;
+}
+
+/* Richer scroll reveals */
+.reveal-scale {
+  opacity: 0;
+  transform: translateY(36px) scale(0.94);
+  transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-spring);
+  transition-delay: var(--stagger, 0s);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-fade:not(.visible) {
+  opacity: 0;
+  transform: none;
+}
+
+.reveal-fade {
+  transition: opacity 1s var(--ease-out);
+  transition-delay: var(--stagger, 0s);
+}
+
+.reveal-fade.visible {
+  opacity: 1;
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-spring);
+  transition-delay: var(--stagger, 0s);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal.visible {
+  transition-timing-function: var(--ease-spring), var(--ease-spring);
+}
+
+/* Micro labels — letterspread */
+.reveal.micro-label.visible,
+.intro-on-load.micro-label.visible {
+  animation: labelIn 0.8s var(--ease-out) forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes labelIn {
+  from {
+    opacity: 0;
+    letter-spacing: 0.35em;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.2em;
+    transform: translateY(0);
+  }
+}
+
+/* Service cards */
+.service-card {
+  position: relative;
+  transition: transform 0.45s var(--ease-spring), box-shadow 0.45s ease, border-color 0.35s ease;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 17px;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, rgba(201, 168, 76, 0.35), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.service-card:hover::after {
+  opacity: 1;
+}
+
+.service-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.service-card__tag {
+  display: inline-block;
+  transition: transform 0.35s var(--ease-spring), color 0.3s ease;
+}
+
+.service-card:hover .service-card__tag {
+  transform: translateX(4px);
+}
+
+/* Campaign cards — shine sweep */
+.campaign-card {
+  transition: transform 0.5s var(--ease-spring), box-shadow 0.5s ease;
+}
+
+.campaign-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.12);
+}
+
+.campaign-card__visual {
+  position: relative;
+  overflow: hidden;
+}
+
+.campaign-card__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 62%
+  );
+  transform: translateX(-100%) skewX(-12deg);
+  transition: transform 0.75s var(--ease-out);
+  pointer-events: none;
+}
+
+.campaign-card:hover .campaign-card__visual::after {
+  transform: translateX(100%) skewX(-12deg);
+}
+
+.campaign-card__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.campaign-card__link::after {
+  content: '→';
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.campaign-card:hover .campaign-card__link::after {
+  transform: translateX(5px);
+}
+
+.campaigns__view-all {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.campaigns__view-all:hover {
+  letter-spacing: 0.04em;
+}
+
+/* Split CTA — ambient glow */
+.split-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.55s var(--ease-spring), box-shadow 0.55s ease;
+}
+
+.split-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(201, 168, 76, 0.08), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.split-card:hover::before {
+  opacity: 1;
+}
+
+.split-card--brands:hover {
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35), inset 0 0 100px rgba(92, 74, 122, 0.15);
+}
+
+.split-card--creators:hover {
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.1);
+}
+
+/* Philosophy — stat pulse */
+.philosophy__stats.visible .stat__number,
+.stat.is-counting .stat__number {
+  animation: statPop 0.7s var(--ease-spring) forwards;
+}
+
+@keyframes statPop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  60% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.stat {
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.philosophy__stats.visible .stat:hover {
+  transform: translateY(-4px);
+}
+
+.philosophy__statement.visible {
+  animation: statementIn 1.1s var(--ease-out) forwards;
+}
+
+@keyframes statementIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) skewX(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) skewX(0);
+  }
+}
+
+/* Creators statement */
+.creators__statement.visible {
+  animation: statementIn 0.9s var(--ease-out) forwards;
+}
+
+/* About watermark parallax (JS sets --parallax-y) */
+.about__watermark,
+.closing__watermark {
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.about__watermark.parallax {
+  transform: translateY(calc(-50% + var(--parallax-y, 0px))) rotate(-2deg);
+}
+
+.closing__watermark.parallax {
+  transform: translate(-50%, calc(-50% + var(--parallax-y, 0px)));
+}
+
+/* Trust strip — label soft pulse after enter */
+.trust.intro-on-load.visible .trust__label {
+  animation: trustGlow 5s ease-in-out 1.5s infinite;
+}
+
+@keyframes trustGlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Footer — stable (no opacity:0; avoids blank black footer) */
+.footer__inner {
+  opacity: 1;
+}
+
+.footer__bar p {
+  transition: color 0.3s ease;
+}
+
+/* Closing CTA pulse (subtle) */
+.closing__cta.visible {
+  animation: ctaGlow 3s ease-in-out 1.5s infinite;
+}
+
+@keyframes ctaGlow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(201, 168, 76, 0.25);
+  }
+}
+
+/* Nav logo subtle hover */
+.nav__logo-mark {
+  transition: transform 0.4s var(--ease-spring);
+}
+
+.nav__logo:hover .nav__logo-mark {
+  transform: rotate(-4deg) scale(1.06);
+}
+
+/* Float card hover depth */
+.float-card {
+  transition: box-shadow 0.4s ease;
+}
+
+body.is-loaded .float-card:hover {
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.12);
+  z-index: 10 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress,
+  .btn::before,
+  .campaign-card__visual::after,
+  .service-card::after,
+  .split-card::before {
+    display: none;
+  }
+
+  .reveal-scale,
+  .reveal-fade,
+  .reveal-left,
+  .gold-rule.reveal,
+  .footer,
+  .footer * {
+    opacity: 1 !important;
+    transform: none !important;
+    width: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .gold-rule.reveal.visible {
+    width: 60px !important;
+  }
+
+  body.is-loaded .nav__links a,
+  body.is-loaded .nav__cta {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  .hero__headline.animate-on-load {
+    clip-path: none !important;
+  }
+
+  .about__watermark,
+  .closing__watermark {
+    transform: translateY(-50%) rotate(-2deg);
+  }
+
+  .closing__watermark {
+    transform: translate(-50%, -50%);
+  }
+}

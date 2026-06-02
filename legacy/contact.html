@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Ekka Media — Work with us as a brand or join as a creator." />
+  <title>Contact — EKKA MEDIA</title>
+  <link rel="icon" href="assets/logo-icon.png" type="image/png" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="animations.css" />
+</head>
+<body class="contact-page">
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <header class="nav nav--scrolled" id="nav" role="banner">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Ekka Media home">
+        <img src="assets/logo-icon.png" alt="" class="nav__logo-mark" width="40" height="40" />
+        <span class="nav__logo-text">EKKA <span class="nav__logo-media">MEDIA</span></span>
+      </a>
+
+      <nav class="nav__links" aria-label="Main navigation">
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#campaigns">Campaigns</a>
+        <a href="index.html#creators">Creators</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+
+      <a href="contact.html" class="nav__cta">Work With Us</a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <button class="nav-overlay__close" id="navClose" aria-label="Close menu">&times;</button>
+    <a href="index.html" class="nav-overlay__brand" aria-label="Ekka Media home">
+      <img src="assets/logo-full.png" alt="Ekka Media" width="200" height="auto" />
+    </a>
+    <nav class="nav-overlay__links" aria-label="Mobile navigation">
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#campaigns">Campaigns</a>
+      <a href="index.html#creators">Creators</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="btn btn--primary nav-overlay__cta">Work With Us</a>
+  </div>
+
+  <main>
+    <section class="contact-hero">
+      <p class="micro-label animate-on-load" style="--delay: 0.05s">Get in touch</p>
+      <h1 class="animate-on-load" style="--delay: 0.15s">Contact Us</h1>
+      <p class="animate-on-load" style="--delay: 0.3s">Brands and creators — tell us about yourself. Every submission is saved securely to our team sheet.</p>
+    </section>
+
+    <div class="contact-main intro-on-load" style="--delay: 0.45s">
+      <div id="configWarning" class="form-config-warning" role="alert"></div>
+
+      <div class="contact-tabs" role="tablist" aria-label="Form type">
+        <button type="button" class="contact-tabs__btn contact-tabs__btn--active" data-tab="brand" role="tab" aria-selected="true" aria-controls="panel-brand">
+          For Brands
+        </button>
+        <button type="button" class="contact-tabs__btn" data-tab="creator" role="tab" aria-selected="false" aria-controls="panel-creator">
+          For Creators
+        </button>
+      </div>
+
+      <!-- Brand form -->
+      <div id="panel-brand" class="contact-panel contact-panel--active" role="tabpanel">
+        <form id="brandForm" class="contact-form" novalidate>
+          <h2 class="contact-form__title">Work With Ekka</h2>
+          <p class="contact-form__desc">Share your brand details and we’ll reach out about creator-led campaigns.</p>
+
+          <div class="form-field">
+            <label for="brand-name">Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="brand-name" name="name" required autocomplete="name" placeholder="Your full name" />
+          </div>
+
+          <div class="form-field">
+            <label for="brand-email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="brand-email" name="email" required autocomplete="email" placeholder="you@company.com" />
+          </div>
+
+          <div class="form-field">
+            <label for="brand-phone">Phone number <span aria-hidden="true">*</span></label>
+            <input
+              type="tel"
+              id="brand-phone"
+              name="phone"
+              required
+              autocomplete="tel"
+              inputmode="numeric"
+              pattern="[0-9]{10}"
+              minlength="10"
+              maxlength="10"
+              title="Enter exactly 10 digits (numbers only)"
+              placeholder="9876543210"
+            />
+            <span class="form-hint">10 digits only, no spaces or +91</span>
+          </div>
+
+          <div class="form-field">
+            <label for="brand-brandName">Brand name <span aria-hidden="true">*</span></label>
+            <input type="text" id="brand-brandName" name="brandName" required placeholder="Your company or brand" />
+          </div>
+
+          <button type="submit" class="btn btn--primary">Submit</button>
+          <div class="form-message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <!-- Creator form -->
+      <div id="panel-creator" class="contact-panel" role="tabpanel" hidden>
+        <form id="creatorForm" class="contact-form" novalidate>
+          <h2 class="contact-form__title">Join as Creator</h2>
+          <p class="contact-form__desc">Apply to the Ekka creator network. We review every profile personally.</p>
+
+          <div class="form-field">
+            <label for="creator-username">Creator username <span aria-hidden="true">*</span></label>
+            <input type="text" id="creator-username" name="username" required placeholder="@yourhandle" />
+          </div>
+
+          <div class="form-field">
+            <label for="creator-fullName">Full name <span aria-hidden="true">*</span></label>
+            <input type="text" id="creator-fullName" name="fullName" required autocomplete="name" placeholder="Your legal or display name" />
+          </div>
+
+          <div class="form-field">
+            <label for="creator-mobile">Mobile number <span aria-hidden="true">*</span></label>
+            <input
+              type="tel"
+              id="creator-mobile"
+              name="mobile"
+              required
+              autocomplete="tel"
+              inputmode="numeric"
+              pattern="[0-9]{10}"
+              minlength="10"
+              maxlength="10"
+              title="Enter exactly 10 digits (numbers only)"
+              placeholder="9876543210"
+            />
+            <span class="form-hint">10 digits only, no spaces or +91</span>
+          </div>
+
+          <div class="form-field">
+            <label for="creator-followers">Total followers <span aria-hidden="true">*</span></label>
+            <input type="number" id="creator-followers" name="followers" required min="0" step="1" placeholder="e.g. 124000" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="creator-country">Country <span aria-hidden="true">*</span></label>
+              <input type="text" id="creator-country" name="country" required autocomplete="country-name" placeholder="United States" />
+            </div>
+            <div class="form-field">
+              <label for="creator-city">City <span aria-hidden="true">*</span></label>
+              <input type="text" id="creator-city" name="city" required autocomplete="address-level2" placeholder="Los Angeles" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="creator-category">Kind of creator <span aria-hidden="true">*</span></label>
+            <select id="creator-category" name="category" required>
+              <option value="" disabled selected>Select a category</option>
+              <option value="Lifestyle">Lifestyle</option>
+              <option value="Fashion">Fashion</option>
+              <option value="Beauty / Makeup">Beauty / Makeup</option>
+              <option value="Fitness / Sport">Fitness / Sport</option>
+              <option value="Food">Food</option>
+              <option value="Travel">Travel</option>
+              <option value="Tech">Tech</option>
+              <option value="Gaming">Gaming</option>
+              <option value="Music">Music</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Education">Education</option>
+              <option value="Parenting / Family">Parenting / Family</option>
+              <option value="Finance / Business">Finance / Business</option>
+              <option value="Art / Design">Art / Design</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Save</button>
+          <div class="form-message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__col footer__brand">
+        <a href="index.html" class="footer__logo-link" aria-label="Ekka Media home">
+          <img src="assets/logo-full.png" alt="Ekka Media" class="footer__logo-img" width="168" height="auto" />
+        </a>
+        <p class="footer__tagline">Creator-led brand storytelling.</p>
+        <p class="footer__legal">© 2025 Ekka Media. All rights reserved.</p>
+      </div>
+      <nav class="footer__col footer__links" aria-label="Footer navigation">
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#campaigns">Campaigns</a>
+        <a href="index.html#creators">Creators</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer__col footer__social">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:hello@ekkamedia.com">Email</a>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <p>Built for modern influence.</p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script>
+    window.EKKA_SHEETS_URL = window.EKKA_SHEETS_URL || 'https://script.google.com/macros/s/AKfycbyERSesBSbiHqwK78lt23X7hiowTB9HNP5UaUdk_6zOXMNj55nitRG9X0kxrrSGlO3B/exec';
+  </script>
+  <script src="main.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>
