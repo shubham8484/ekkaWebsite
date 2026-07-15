@@ -4,7 +4,7 @@ export const site = {
   tagline: 'Creator-led brand storytelling.',
   email: 'hello@ekkamedia.com',
   /** Production site URL — override with NEXT_PUBLIC_SITE_URL in .env */
-  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://ekkamedia.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://www.ekkamedia.in',
   social: {
     instagram: 'https://www.instagram.com/ekka.media',
     linkedin: 'https://www.linkedin.com/in/ekkamedia',

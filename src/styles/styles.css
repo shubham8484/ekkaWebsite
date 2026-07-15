@@ -768,8 +768,9 @@ body.is-loaded .scroll-indicator {
 .about {
   position: relative;
   background: var(--ivory);
-  padding: 120px 32px;
+  padding: 72px 32px;
   overflow: hidden;
+  scroll-margin-top: calc(var(--nav-height) + 12px);
 }
 
 .about__watermark {
@@ -830,7 +831,8 @@ body.is-loaded .scroll-indicator {
 .services {
   background: var(--ivory);
   border-top: 1px solid var(--border);
-  padding: 120px 32px;
+  padding: 72px 32px;
+  scroll-margin-top: calc(var(--nav-height) + 12px);
 }
 
 .services__inner {
@@ -842,7 +844,7 @@ body.is-loaded .scroll-indicator {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(36px, 4vw, 52px);
-  margin: 12px 0 48px;
+  margin: 12px 0 36px;
 }
 
 .services__grid {
@@ -898,8 +900,9 @@ body.is-loaded .scroll-indicator {
 .creators {
   position: relative;
   background: var(--ivory-warm);
-  padding: 120px 0 120px 32px;
+  padding: 72px 0 72px 32px;
   overflow: hidden;
+  scroll-margin-top: calc(var(--nav-height) + 12px);
 }
 
 .creators__texture {
@@ -1039,8 +1042,9 @@ body.is-loaded .scroll-indicator {
   background: var(--gradient-trust);
   border-top: 1px solid rgba(56, 189, 248, 0.35);
   border-bottom: 1px solid rgba(56, 189, 248, 0.35);
-  padding: 120px 32px;
+  padding: 72px 32px;
   overflow: hidden;
+  scroll-margin-top: calc(var(--nav-height) + 12px);
 }
 
 .philosophy__bg {
@@ -1134,7 +1138,8 @@ body.is-loaded .scroll-indicator {
 
 .campaigns {
   background: var(--ivory);
-  padding: 120px 32px;
+  padding: 72px 32px;
+  scroll-margin-top: calc(var(--nav-height) + 12px);
 }
 
 .campaigns__inner {
@@ -1146,7 +1151,7 @@ body.is-loaded .scroll-indicator {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(36px, 4vw, 52px);
-  margin: 12px 0 48px;
+  margin: 12px 0 36px;
 }
 
 .campaigns__grid {
@@ -1383,9 +1388,10 @@ body.is-loaded .scroll-indicator {
 .closing {
   position: relative;
   background: var(--ivory);
-  padding: 140px 32px;
+  padding: 88px 32px;
   text-align: center;
   overflow: hidden;
+  scroll-margin-top: calc(var(--nav-height) + 12px);
 }
 
 .closing__grain {
@@ -1755,8 +1761,13 @@ body.is-loaded .scroll-indicator {
   .creators,
   .philosophy,
   .campaigns {
-    padding-top: 72px;
-    padding-bottom: 72px;
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .closing {
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
 
   .services__grid {

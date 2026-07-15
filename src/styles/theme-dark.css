@@ -724,6 +724,7 @@
     radial-gradient(ellipse 55% 45% at 50% 0%, rgba(34, 211, 238, 0.12) 0%, transparent 55%),
     radial-gradient(ellipse 40% 40% at 80% 40%, rgba(192, 132, 252, 0.1) 0%, transparent 50%),
     linear-gradient(180deg, #070B14 0%, #0C1322 100%) !important;
+  padding: calc(var(--nav-height) + 28px) 32px 24px !important;
 }
 
 .contact-tabs {

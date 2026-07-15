@@ -165,10 +165,10 @@ export default function ContactForms() {
     <div className="contact-main intro-on-load" style={{ ['--delay' as string]: '0.45s' }}>
       {configWarning && (
         <div className="form-config-warning form-config-warning--visible" role="alert">
-          <strong>Form backend not configured.</strong> Set{' '}
-          <code>NEXT_PUBLIC_SHEETS_URL</code> in <code>.env.local</code> (local) or Netlify environment
-          variables (production) to your Apps Script <code>/exec</code> URL with access set to{' '}
-          <strong>Anyone</strong>.
+          <strong>Form backend not configured.</strong> In Vercel go to{' '}
+          <strong>Settings → Environment Variables</strong> and set{' '}
+          <code>NEXT_PUBLIC_SHEETS_URL</code> to your Apps Script <code>/exec</code> URL
+          (access: Anyone). Then redeploy.
         </div>
       )}
 

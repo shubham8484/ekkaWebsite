@@ -1,4 +1,9 @@
-const SHEETS_URL = (process.env.NEXT_PUBLIC_SHEETS_URL || '').trim().replace(/\/$/, '');
+const ENV_SHEETS = (process.env.NEXT_PUBLIC_SHEETS_URL || '').trim().replace(/\/$/, '');
+/** Public Apps Script endpoint — used if env is missing (e.g. Vercel without env var yet) */
+const FALLBACK_SHEETS =
+  'https://script.google.com/macros/s/AKfycbwXPggk73UuoU2OHxQFNipRJwPrpcwOmR1d1P9gmIpoMj7Q1NohjnOZGcD28AjF46vj/exec';
+
+const SHEETS_URL = ENV_SHEETS || FALLBACK_SHEETS;
 
 export type BrandPayload = {
   type: 'brand';

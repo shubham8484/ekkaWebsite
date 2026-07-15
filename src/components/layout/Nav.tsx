@@ -13,7 +13,7 @@ function scrollToHash(hash: string) {
   if (!section) return false;
 
   const navH = document.getElementById('nav')?.offsetHeight ?? 64;
-  const top = section.getBoundingClientRect().top + window.scrollY - navH - 8;
+  const top = section.getBoundingClientRect().top + window.scrollY - navH - 4;
   window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
 
   section

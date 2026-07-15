@@ -21,7 +21,7 @@
 }
 
 .contact-hero {
-  padding: calc(var(--nav-height) + 64px) 32px 48px;
+  padding: calc(var(--nav-height) + 28px) 32px 28px;
   text-align: center;
   background:
     radial-gradient(ellipse 60% 50% at 50% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
@@ -32,8 +32,8 @@
 .contact-hero h1 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(40px, 5vw, 56px);
-  margin: 16px 0 12px;
+  font-size: clamp(36px, 5vw, 52px);
+  margin: 10px 0 8px;
   line-height: 1.1;
 }
 
@@ -47,7 +47,30 @@
 .contact-main {
   max-width: 640px;
   margin: 0 auto;
-  padding: 0 32px 100px;
+  padding: 0 32px 72px;
+}
+
+.form-config-warning {
+  max-width: 640px;
+  margin: 0 auto 16px;
+  padding: 12px 16px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  border-radius: 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+  display: none;
+}
+
+.form-config-warning--visible {
+  display: block;
+}
+
+.form-config-warning code {
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 /* Tabs */
@@ -55,7 +78,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   padding: 6px;
   background: var(--ivory-deep);
   border-radius: 999px;
@@ -106,7 +129,7 @@
   background: var(--ivory-card);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 40px 36px;
+  padding: 28px 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
 }
 
@@ -215,32 +238,9 @@
   color: #8b3030;
 }
 
-.form-config-warning {
-  max-width: 640px;
-  margin: 0 auto 24px;
-  padding: 16px 20px;
-  background: rgba(37, 99, 235, 0.08);
-  border: 1px solid rgba(37, 99, 235, 0.25);
-  border-radius: 12px;
-  font-size: 14px;
-  color: var(--text-muted);
-  display: none;
-}
-
-.form-config-warning--visible {
-  display: block;
-}
-
-.form-config-warning code {
-  font-size: 12px;
-  background: rgba(0, 0, 0, 0.06);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
 @media (max-width: 600px) {
   .contact-hero {
-    padding: calc(var(--nav-height) + 40px) 16px 36px;
+    padding: calc(var(--nav-height) + 20px) 16px 20px;
   }
 
   .contact-hero,

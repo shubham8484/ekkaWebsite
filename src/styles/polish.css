@@ -24,7 +24,7 @@
 }
 
 .section-head {
-  margin-bottom: 56px;
+  margin-bottom: 40px;
 }
 
 .section-head .micro-label {
@@ -574,7 +574,7 @@
 /* --- Split CTA --- */
 
 .split-cta {
-  padding: 100px 32px;
+  padding: 64px 32px;
   background: var(--ivory);
 }
 
