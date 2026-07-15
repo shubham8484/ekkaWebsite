@@ -31,11 +31,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  icons: {
-    icon: [{ url: '/assets/logo-icon.png', type: 'image/png' }],
-    apple: [{ url: '/assets/logo-icon.png' }],
-    shortcut: ['/assets/logo-icon.png'],
-  },
   manifest: '/manifest.webmanifest',
   openGraph: {
     type: 'website',

@@ -1859,7 +1859,7 @@ body.is-loaded .scroll-indicator {
     display: none;
   }
 
-  .brand-logo__img,
+  .brand-logo__mark svg,
   .nav__logo-mark {
     width: 38px;
     height: 38px;

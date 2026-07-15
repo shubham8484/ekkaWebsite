@@ -82,7 +82,10 @@
 }
 
 .chatbot__avatar {
+  display: flex;
+  flex-shrink: 0;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .chatbot__title {

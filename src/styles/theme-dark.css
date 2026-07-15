@@ -22,31 +22,24 @@
   opacity: 0.92;
 }
 
-.brand-logo__img {
+.brand-logo__mark {
+  display: flex;
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  border-radius: 10px;
-  /* Shift gold trim → cyan / lavender to match site theme */
-  filter:
-    hue-rotate(165deg)
-    saturate(1.65)
-    brightness(1.05)
-    contrast(1.08)
-    drop-shadow(0 0 10px rgba(34, 211, 238, 0.4));
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.35));
 }
 
-.brand-logo--sm .brand-logo__img {
+.brand-logo__mark svg {
+  display: block;
+}
+
+.brand-logo--sm .brand-logo__mark svg {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
 }
 
-.brand-logo--lg .brand-logo__img {
+.brand-logo--lg .brand-logo__mark svg {
   width: 52px;
   height: 52px;
-  border-radius: 12px;
 }
 
 .brand-logo__full {
@@ -899,9 +892,9 @@ body.is-loaded .intro-on-load {
     letter-spacing: 0.1em;
   }
 
-  .brand-logo__img {
-    width: 34px;
-    height: 34px;
+  .brand-logo__mark svg {
+    width: 38px;
+    height: 38px;
   }
 
   .footer__brand .brand-logo {
@@ -1049,7 +1042,7 @@ body.is-loaded .intro-on-load {
     max-width: none;
   }
 
-  .brand-logo__img {
+  .brand-logo__mark svg {
     width: 38px;
     height: 38px;
   }

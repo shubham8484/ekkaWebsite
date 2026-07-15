@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   type ChatMessage,
   getBotResponse,
@@ -10,6 +9,7 @@ import {
   renderMarkdown,
 } from '@/lib/chatbot';
 import { site } from '@/data/content';
+import LogoMark from '@/components/brand/LogoMark';
 
 const WELCOME: ChatMessage = {
   id: 'welcome',
@@ -81,18 +81,9 @@ export default function Chatbot() {
       >
         <header className="chatbot__header">
           <div className="chatbot__header-info">
-            <Image
-              src="/assets/logo-icon.png"
-              alt=""
-              width={32}
-              height={32}
-              className="chatbot__avatar"
-              style={{
-                filter:
-                  'hue-rotate(165deg) saturate(1.65) brightness(1.05) contrast(1.08)',
-                borderRadius: 8,
-              }}
-            />
+            <span className="chatbot__avatar">
+              <LogoMark size={32} gradientId="chatLogoGrad" />
+            </span>
             <div>
               <p className="chatbot__title">Ekka Assistant</p>
               <p className="chatbot__status">
