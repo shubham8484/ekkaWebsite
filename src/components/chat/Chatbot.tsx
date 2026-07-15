@@ -87,12 +87,17 @@ export default function Chatbot() {
               width={32}
               height={32}
               className="chatbot__avatar"
+              style={{
+                filter:
+                  'hue-rotate(165deg) saturate(1.65) brightness(1.05) contrast(1.08)',
+                borderRadius: 8,
+              }}
             />
             <div>
               <p className="chatbot__title">Ekka Assistant</p>
               <p className="chatbot__status">
                 <span className="chatbot__status-dot" aria-hidden="true" />
-                Online
+                Online · {site.parent.shortName}
               </p>
             </div>
           </div>

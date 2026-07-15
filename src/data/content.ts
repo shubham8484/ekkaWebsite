@@ -1,12 +1,37 @@
 export const site = {
   name: 'EKKA MEDIA',
+  legalName: 'Ekka Media',
   tagline: 'Creator-led brand storytelling.',
   email: 'hello@ekkamedia.com',
+  /** Production site URL — override with NEXT_PUBLIC_SITE_URL in .env */
+  url: process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || 'https://ekkamedia.com',
   social: {
-    instagram: 'https://instagram.com/ekkamedia',
-    linkedin: 'https://linkedin.com/company/ekkamedia',
+    instagram: 'https://www.instagram.com/ekka.media',
+    linkedin: 'https://www.linkedin.com/in/ekkamedia',
   },
   est: '2024',
+  parent: {
+    name: 'Ottobaan Technologies',
+    shortName: 'Ottobaan',
+    label: 'An Ottobaan Technologies Company',
+  },
+  seo: {
+    title: 'Ekka Media — Creator Partnership Studio | Influencer Marketing',
+    description:
+      'Ekka Media is a creator partnership studio under Ottobaan Technologies. We connect brands with creators through influencer campaigns, UGC, and culture-led brand storytelling.',
+    keywords: [
+      'Ekka Media',
+      'influencer marketing',
+      'creator partnerships',
+      'UGC campaigns',
+      'brand collaborations',
+      'influencer agency India',
+      'creator economy',
+      'social media marketing',
+      'Ottobaan Technologies',
+      'influencer campaign strategy',
+    ],
+  },
 } as const;
 
 export const navLinks = [

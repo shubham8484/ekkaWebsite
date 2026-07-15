@@ -15,7 +15,7 @@
   height: 2px;
   width: 0%;
   z-index: 1001;
-  background: linear-gradient(90deg, var(--gold), #8b7355, var(--gold));
+  background: linear-gradient(90deg, #22D3EE, #818CF8, #C084FC);
   pointer-events: none;
   transform-origin: left;
   transition: width 0.08s linear;
@@ -97,7 +97,7 @@ body.is-loaded .hero__headline.animate-on-load {
   background: linear-gradient(
     105deg,
     transparent 35%,
-    rgba(201, 168, 76, 0.12) 50%,
+    rgba(37, 99, 235, 0.12) 50%,
     transparent 65%
   );
 }
@@ -193,7 +193,7 @@ body.is-loaded .hero__headline.animate-on-load {
   inset: -1px;
   border-radius: 17px;
   padding: 1px;
-  background: linear-gradient(135deg, transparent, rgba(201, 168, 76, 0.35), transparent);
+  background: linear-gradient(135deg, transparent, rgba(37, 99, 235, 0.35), transparent);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -291,7 +291,7 @@ body.is-loaded .hero__headline.animate-on-load {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 20%, rgba(201, 168, 76, 0.08), transparent 55%);
+  background: radial-gradient(circle at 30% 20%, rgba(37, 99, 235, 0.08), transparent 55%);
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -401,7 +401,7 @@ body.is-loaded .hero__headline.animate-on-load {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   }
   50% {
-    box-shadow: 0 8px 32px rgba(201, 168, 76, 0.25);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.25);
   }
 }
 

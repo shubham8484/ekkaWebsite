@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { navLinks, site } from '@/data/content';
+import { navLinks } from '@/data/content';
+import Logo from '@/components/brand/Logo';
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -12,12 +12,7 @@ export default function Nav() {
     <>
       <header className="nav" id="nav" role="banner">
         <div className="nav__inner">
-          <Link href="/" className="nav__logo" aria-label={`${site.name} home`}>
-            <Image src="/assets/logo-icon.png" alt="" className="nav__logo-mark" width={40} height={40} />
-            <span className="nav__logo-text">
-              EKKA <span className="nav__logo-media">MEDIA</span>
-            </span>
-          </Link>
+          <Logo size="md" />
 
           <nav className="nav__links" aria-label="Main navigation">
             {navLinks.map((link) => (
@@ -27,9 +22,14 @@ export default function Nav() {
             ))}
           </nav>
 
-          <Link href="/contact" className="nav__cta">
-            Work With Us
-          </Link>
+          <div className="nav__actions">
+            <Link href="/#services" className="nav__cta-ghost">
+              Explore services
+            </Link>
+            <Link href="/contact" className="nav__cta">
+              Work With Us
+            </Link>
+          </div>
 
           <button
             type="button"
@@ -49,9 +49,7 @@ export default function Nav() {
         <button type="button" className="nav-overlay__close" aria-label="Close menu" onClick={() => setOpen(false)}>
           &times;
         </button>
-        <Link href="/" className="nav-overlay__brand" aria-label={`${site.name} home`} onClick={() => setOpen(false)}>
-          <Image src="/assets/logo-full.png" alt={site.name} width={200} height={80} />
-        </Link>
+        <Logo size="lg" onClick={() => setOpen(false)} />
         <nav className="nav-overlay__links" aria-label="Mobile navigation">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
@@ -59,7 +57,7 @@ export default function Nav() {
             </Link>
           ))}
         </nav>
-        <Link href="/contact" className="btn btn--primary nav-overlay__cta" onClick={() => setOpen(false)}>
+        <Link href="/contact" className="btn btn--gradient nav-overlay__cta" onClick={() => setOpen(false)}>
           Work With Us
         </Link>
       </div>

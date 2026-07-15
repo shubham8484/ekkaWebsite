@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import ContactForms from '@/components/contact/ContactForms';
+import { buildPageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Contact',
-  description: 'Work with Ekka Media as a brand or apply to join as a creator.',
-};
+  description:
+    'Contact Ekka Media to run influencer campaigns, book creator partnerships, or join our creator network. Brands and creators welcome.',
+  path: '/contact',
+  keywords: ['contact Ekka Media', 'hire influencer agency', 'join as creator', 'brand collaboration inquiry'],
+});
 
 export default function ContactPage() {
   return (

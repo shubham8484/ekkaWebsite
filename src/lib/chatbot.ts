@@ -28,7 +28,7 @@ function formatCreators(): string {
 }
 
 function formatAbout(): string {
-  return `Ekka Media is a creator partnership studio. We help brands find the right voices — aligned on audience, values, and creative direction.\n\nOur philosophy: "Connection over reach. Culture over clicks."`;
+  return `Ekka Media is a creator partnership studio and part of Ottobaan Technologies. We help brands find the right voices — aligned on audience, values, and creative direction.\n\nOur philosophy: "Connection over reach. Culture over clicks."`;
 }
 
 function formatContact(): string {

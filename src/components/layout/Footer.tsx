@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { navLinks, site } from '@/data/content';
+import Logo from '@/components/brand/Logo';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -9,10 +9,9 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer__inner">
         <div className="footer__col footer__brand">
-          <Link href="/" className="footer__logo-link" aria-label={`${site.name} home`}>
-            <Image src="/assets/logo-full.png" alt={site.name} className="footer__logo-img" width={168} height={80} />
-          </Link>
+          <Logo href="/" size="md" />
           <p className="footer__tagline">{site.tagline}</p>
+          <p className="footer__parent-line">{site.parent.label}</p>
           <p className="footer__legal">
             &copy; {year} Ekka Media. All rights reserved.
           </p>
@@ -35,7 +34,9 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer__bar">
-        <p>Built for modern influence.</p>
+        <p>
+          Built for modern influence · Part of <span className="footer__parent-name">{site.parent.name}</span>
+        </p>
       </div>
     </footer>
   );

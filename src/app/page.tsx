@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Hero from '@/components/home/Hero';
 import TrustStrip from '@/components/home/TrustStrip';
 import About from '@/components/home/About';
@@ -7,6 +8,11 @@ import Philosophy from '@/components/home/Philosophy';
 import WorkSection from '@/components/home/WorkSection';
 import SplitCta from '@/components/home/SplitCta';
 import Closing from '@/components/home/Closing';
+import { buildPageMetadata } from '@/lib/seo';
+
+export const metadata: Metadata = buildPageMetadata({
+  path: '/',
+});
 
 export default function HomePage() {
   return (
