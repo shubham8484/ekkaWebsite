@@ -1566,13 +1566,14 @@ body.is-loaded .scroll-indicator {
 }
 
 /* ============================================
-   SCROLL REVEAL
+   SCROLL REVEAL — visible by default (no blank sections)
+   Soft motion only when .visible is added
    ============================================ */
 
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.45s ease, transform 0.45s ease;
   transition-delay: var(--stagger, 0s);
 }
 
@@ -1582,9 +1583,9 @@ body.is-loaded .scroll-indicator {
 }
 
 .reveal-word {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
 .reveal-word.visible {
@@ -1628,11 +1629,11 @@ body.is-loaded .scroll-indicator {
   }
 }
 
-/* Creator cards slide-in */
+/* Creator cards — always visible */
 .creator-card.slide-in {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .creator-card.slide-in.visible {

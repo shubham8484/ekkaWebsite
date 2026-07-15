@@ -835,10 +835,23 @@
   background: linear-gradient(90deg, #22D3EE, #818CF8, #C084FC) !important;
 }
 
-/* Float cards / legacy light surfaces */
-.float-card,
-.hero__panel-flow {
-  color: var(--text-primary);
+/* Safety: never hide section content while scrolling */
+.reveal,
+.reveal-scale,
+.reveal-fade,
+.reveal-left,
+.reveal-word,
+.creator-card.slide-in,
+.intro-on-load,
+.animate-on-load {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+body.is-loaded .animate-on-load,
+body.is-loaded .intro-on-load {
+  opacity: 1 !important;
+  animation: none !important;
 }
 
 @media (max-width: 1024px) {
