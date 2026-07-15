@@ -2,12 +2,12 @@ import type { MetadataRoute } from 'next';
 import { site } from '@/data/content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = site.url;
+  const base = site.url.replace(/\/$/, '');
   const lastModified = new Date();
 
   return [
     {
-      url: base,
+      url: `${base}/`,
       lastModified,
       changeFrequency: 'weekly',
       priority: 1,

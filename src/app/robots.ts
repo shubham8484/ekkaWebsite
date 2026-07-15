@@ -2,7 +2,8 @@ import type { MetadataRoute } from 'next';
 import { site } from '@/data/content';
 
 export default function robots(): MetadataRoute.Robots {
-  const base = site.url;
+  const base = site.url.replace(/\/$/, '');
+  const host = base.replace(/^https?:\/\//, '');
 
   return {
     rules: [
@@ -11,8 +12,12 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/api/'],
       },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+      },
     ],
     sitemap: `${base}/sitemap.xml`,
-    host: base,
+    host,
   };
 }
