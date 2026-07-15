@@ -2,11 +2,42 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { navLinks } from '@/data/content';
 import Logo from '@/components/brand/Logo';
 
+function scrollToHash(hash: string) {
+  const id = hash.replace(/^#/, '');
+  if (!id) return false;
+  const section = document.getElementById(id);
+  if (!section) return false;
+
+  const navH = document.getElementById('nav')?.offsetHeight ?? 64;
+  const top = section.getBoundingClientRect().top + window.scrollY - navH - 8;
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+
+  section
+    .querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-left, .reveal-word, .slide-in')
+    .forEach((el) => el.classList.add('visible'));
+
+  return true;
+}
+
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const handleSectionLink = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!href.startsWith('/#')) return;
+    const hash = href.slice(1); // #about
+
+    if (pathname === '/' || pathname === '') {
+      e.preventDefault();
+      window.history.pushState(null, '', href);
+      scrollToHash(hash);
+      setOpen(false);
+    }
+  };
 
   return (
     <>
@@ -16,14 +47,14 @@ export default function Nav() {
 
           <nav className="nav__links" aria-label="Main navigation">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
+              <Link key={link.href} href={link.href} onClick={handleSectionLink(link.href)}>
                 {link.label}
               </Link>
             ))}
           </nav>
 
           <div className="nav__actions">
-            <Link href="/#services" className="nav__cta-ghost">
+            <Link href="/#services" className="nav__cta-ghost" onClick={handleSectionLink('/#services')}>
               Explore services
             </Link>
             <Link href="/contact" className="nav__cta">
@@ -52,7 +83,14 @@ export default function Nav() {
         <Logo size="lg" onClick={() => setOpen(false)} />
         <nav className="nav-overlay__links" aria-label="Mobile navigation">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setOpen(false)}>
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={(e) => {
+                handleSectionLink(link.href)(e);
+                setOpen(false);
+              }}
+            >
               {link.label}
             </Link>
           ))}

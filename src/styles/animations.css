@@ -433,10 +433,13 @@ body.is-loaded .float-card:hover {
     display: none;
   }
 
+  .reveal,
   .reveal-scale,
   .reveal-fade,
   .reveal-left,
+  .reveal-word,
   .gold-rule.reveal,
+  .slide-in,
   .footer,
   .footer * {
     opacity: 1 !important;

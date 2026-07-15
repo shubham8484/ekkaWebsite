@@ -2,6 +2,46 @@
 
 import { useEffect } from 'react';
 
+function revealEl(el: Element) {
+  el.classList.add('visible');
+}
+
+function revealInView(selector = '.reveal, .reveal-fade, .reveal-scale, .reveal-left, .reveal-word') {
+  document.querySelectorAll(selector).forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || 0;
+    if (rect.top < vh * 0.98 && rect.bottom > 0) {
+      revealEl(el);
+    }
+  });
+}
+
+function revealSection(hash: string) {
+  const id = hash.replace(/^#/, '');
+  if (!id) return;
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  section
+    .querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-left, .reveal-word, .slide-in')
+    .forEach(revealEl);
+
+  // Also reveal nearby siblings that may sit just under the fold
+  requestAnimationFrame(() => revealInView());
+}
+
+function scrollToHash(hash: string) {
+  const id = hash.replace(/^#/, '');
+  if (!id) return;
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  const navH = document.getElementById('nav')?.offsetHeight ?? 64;
+  const top = section.getBoundingClientRect().top + window.scrollY - navH - 8;
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+  revealSection(hash);
+}
+
 export default function PageEffects() {
   useEffect(() => {
     const nav = document.getElementById('nav');
@@ -43,29 +83,49 @@ export default function PageEffects() {
       ticking = false;
     }
 
-    window.addEventListener('scroll', () => {
+    const onScroll = () => {
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(updateScrollEffects);
       }
-    }, { passive: true });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
     updateScrollEffects();
 
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            revealEl(entry.target);
             revealObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.05, rootMargin: '80px 0px 80px 0px' }
     );
 
     document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-left').forEach((el) => {
       revealObserver.observe(el);
     });
+
+    // Catch elements already in view (hash jumps / fast scroll)
+    const revealPass = () => revealInView();
+    requestAnimationFrame(revealPass);
+    setTimeout(revealPass, 200);
+    setTimeout(revealPass, 600);
+    setTimeout(revealPass, 1200);
+
+    if (window.location.hash) {
+      setTimeout(() => {
+        scrollToHash(window.location.hash);
+      }, 100);
+    }
+
+    const onHashChange = () => {
+      if (window.location.hash) scrollToHash(window.location.hash);
+    };
+    window.addEventListener('hashchange', onHashChange);
 
     const closingSection = document.querySelector('.closing');
     const closingWords = document.querySelectorAll('.reveal-word');
@@ -81,7 +141,7 @@ export default function PageEffects() {
             }
           });
         },
-        { threshold: 0.2 }
+        { threshold: 0.15, rootMargin: '40px' }
       );
       wordObserver.observe(closingSection);
     }
@@ -103,7 +163,7 @@ export default function PageEffects() {
             }
           });
         },
-        { threshold: 0.15 }
+        { threshold: 0.1, rootMargin: '60px' }
       );
       creatorObserver.observe(creatorsRow);
     }
@@ -153,7 +213,7 @@ export default function PageEffects() {
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.35, rootMargin: '40px' }
     );
 
     document.querySelectorAll('.stat__number[data-target]').forEach((el) => statsObserver.observe(el));
@@ -169,13 +229,15 @@ export default function PageEffects() {
             }
           });
         },
-        { threshold: 0.25 }
+        { threshold: 0.15, rootMargin: '40px' }
       );
       blockObs.observe(philosophyStats);
     }
 
     return () => {
-      window.removeEventListener('scroll', updateScrollEffects);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('hashchange', onHashChange);
+      revealObserver.disconnect();
     };
   }, []);
 
