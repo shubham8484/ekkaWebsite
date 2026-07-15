@@ -82,10 +82,13 @@
 }
 
 .chatbot__avatar {
-  display: flex;
-  flex-shrink: 0;
   border-radius: 8px;
-  overflow: hidden;
+  /* Match nav: original Ekka E with theme tint */
+  filter:
+    hue-rotate(165deg)
+    saturate(1.65)
+    brightness(1.05)
+    contrast(1.08);
 }
 
 .chatbot__title {

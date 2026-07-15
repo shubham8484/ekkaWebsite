@@ -31,6 +31,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  // Favicon = original Ekka E (theme-tinted) via src/app/icon.png + apple-icon.png
   manifest: '/manifest.webmanifest',
   openGraph: {
     type: 'website',

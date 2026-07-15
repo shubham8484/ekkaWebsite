@@ -2,9 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useId } from 'react';
 import { site } from '@/data/content';
-import LogoMark from '@/components/brand/LogoMark';
 
 type LogoProps = {
   href?: string;
@@ -15,7 +13,6 @@ type LogoProps = {
 };
 
 export default function Logo({ href = '/', size = 'md', full = false, onClick }: LogoProps) {
-  const gid = useId().replace(/:/g, '');
   const markPx = size === 'lg' ? 52 : size === 'sm' ? 32 : 40;
   const fullW = size === 'lg' ? 200 : size === 'sm' ? 120 : 160;
   const fullH = size === 'lg' ? 80 : size === 'sm' ? 48 : 64;
@@ -31,9 +28,14 @@ export default function Logo({ href = '/', size = 'md', full = false, onClick }:
     />
   ) : (
     <>
-      <span className="brand-logo__mark" aria-hidden="true">
-        <LogoMark size={markPx} gradientId={gid} />
-      </span>
+      <Image
+        src="/assets/logo-icon.png"
+        alt=""
+        width={markPx}
+        height={markPx}
+        className="brand-logo__img"
+        priority={size !== 'sm'}
+      />
       <span className="brand-logo__text">
         <span className="brand-logo__name">
           EKKA <span className="brand-logo__media">MEDIA</span>
